@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button="" menuToggle="" (click)="onToggleMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Liste des CD
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <p>Ceci est ma page ou j'affiche la liste des CD</p>
+  <button ion-item
+          icon-start
+          *ngFor="let Cd of CdList;
+          let i = index"
+          (click)="onLoadCd(i)">
+    <ion-icon name="disc" color="primary"></ion-icon>
+    {{Cd.title}}
+  </button>
+</ion-content>

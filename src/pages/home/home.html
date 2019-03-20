@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Acceuil
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-list>
+  <button ion-item
+          icon-start
+          *ngFor="let livres of LivresList;
+          let i = index"
+          (click)="onLoadLivre(i)">
+    <ion-icon name="bookmarks" color ="secondary"></ion-icon>
+    {{livres.title}}
+  </button>
+  <button ion-item
+          icon-start
+          *ngFor="let cd of cdList;let  i = index"
+          (click)="onLoadCd(i)">
+
+    <ion-icon name="disc" color="primary"></ion-icon>
+    {{cd.title}}
+  </button>
+</ion-list>
+</ion-content>

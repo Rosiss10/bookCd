@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button clear color="danger" (click)="dissModal()">Fermer</button>
+    </ion-buttons>
+    <ion-title>
+      CD
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card [ngClass]="{'is-On':cdList.etat, 'is-Off':!cdList.etat}">
+  <ion-card-header>
+    <ion-title>
+      {{cdList.title}}
+    </ion-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p *ngFor="let cdList of cdList.description">{{cdList}}</p>
+  </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button [disabled]="cdList.etat" color="secondary" (click)="onToggleCd()" full>Preter</button>
+      </ion-col>
+      <ion-col>
+        <button color="orange" ion-button [disabled]="!cdList.etat" ion-button (click)="onToggleCd()"  full>Recuperer</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

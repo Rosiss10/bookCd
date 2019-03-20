@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button clear color="danger" (click)="dissModal()">Fermer</button>
+    </ion-buttons>
+    <ion-title>
+      Livres
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-card [ngClass]="{'is-On':LivreList.etat, 'is-Off':!LivreList.etat}">
+  <ion-card-header>
+    <ion-title>
+      {{LivreList.title}}
+    </ion-title>
+  </ion-card-header>
+  <ion-card-content>
+   <p *ngFor="let Livre of LivreList.description">{{Livre}}</p>
+  </ion-card-content>
+
+</ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button [disabled]="LivreList.etat" color="secondary" (click)="onToggleLivre()" full>Preter</button>
+      </ion-col>
+      <ion-col>
+        <button color="orange" ion-button [disabled]="!LivreList.etat" ion-button (click)="onToggleLivre()"  full>Recuperer</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
