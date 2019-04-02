@@ -20,14 +20,26 @@
     <p *ngFor="let cdList of cdList.description">{{cdList}}</p>
   </ion-card-content>
   </ion-card>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <button ion-button [disabled]="cdList.etat" color="secondary" (click)="onToggleCd()" full>Preter</button>
-      </ion-col>
-      <ion-col>
-        <button color="orange" ion-button [disabled]="!cdList.etat" ion-button (click)="onToggleCd()"  full>Recuperer</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <form #f="ngForm" (ngSubmit)="onSubmitForm(f)" >
+    <ion-list>
+      <ion-item>
+        <ion-label>Nom de la personne qui emprunte</ion-label>
+      </ion-item>
+      <ion-input type="text" name="namePersonne"
+                 [disabled]="cdList.etat"
+                 ngModel required=""
+                 placeholder="Tapez le Nom ici afin de preter un cd"
+                 [(ngModel)]="cdList.namePersonne"></ion-input>
+    </ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button [disabled]="!f.valid || cdList.etat" color="secondary" type="submit" full>Preter</button>
+        </ion-col>
+        <ion-col>
+          <button color="orange" ion-button [disabled]="!cdList.etat " ion-button type="submit"  full>Recuperer</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

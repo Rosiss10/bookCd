@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button="" menuToggle="" (click)="onToggleMenu()">
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -9,14 +9,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <p>Ceci est ma page des livres</p>
+<ion-content padding>
+  <p>Cette liste contient les livres et leurs Etats</p>
   <button ion-item
           icon-start
           *ngFor="let livres of LivresList;
           let i = index"
           (click)="onLoadLivre(i)">
-    <ion-icon name="bookmarks" color="secondary"></ion-icon>
+    <ion-icon name="bookmarks" [color]="livres.etat ? 'secondary' : 'danger' "></ion-icon>
     {{livres.title}}
+    <p *ngIf="livres.namePersonne">{{livres.namePersonne}}</p>
   </button>
+
 </ion-content>

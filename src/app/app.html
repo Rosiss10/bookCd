@@ -1,6 +1,6 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="danger">
       <ion-title>
         Menu
       </ion-title>
@@ -10,9 +10,28 @@
   <ion-content>
     <ion-list>
 
-      <button ion-item icon-start (click)="onNavigate(settingsPage)">
-        <ion-icon name="options"></ion-icon>
+      <button ion-item icon-start (click)="onNavigate(tabsPage)" *ngIf="isAuth">
+        <ion-icon name="home" color="primary"></ion-icon>
+        Acceuil
+      </button>
+
+      <button ion-item icon-start (click)="onNavigate(settingsPage)" *ngIf="isAuth">
+        <ion-icon name="options" color="primary"></ion-icon>
         Réglage
+      </button>
+
+      <button ion-item icon-start (click)="onNavigate(authPage, {mode: 'new'})" *ngIf="!isAuth">
+        <ion-icon name="person-add"></ion-icon>
+        Nouvel Utilisateur
+      </button>
+      <button ion-item icon-start (click)="onNavigate(authPage, {mode: 'connect'})" *ngIf="!isAuth">
+        <ion-icon name="person"></ion-icon>
+        Connexion
+      </button>
+
+      <button ion-item icon-start (click)="onDisconnect()" *ngIf="isAuth">
+        <ion-icon name="exit" color="danger"></ion-icon>
+        Déconnexion
       </button>
     </ion-list>
   </ion-content>

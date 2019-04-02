@@ -14,6 +14,9 @@ import {BookListPage} from "../pages/book/book";
 import {TabsPage} from "../pages/tabs/tabs";
 import {ListCdPage} from "../pages/cd/cd";
 import {SettingsPage} from "../pages/settings/settings";
+import {AuthService} from "../pages/services/auth.service";
+import {AuthPage} from "../pages/auth/auth";
+import {IonicStorageModule} from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -24,11 +27,13 @@ import {SettingsPage} from "../pages/settings/settings";
     BookListPage,
     ListCdPage,
     TabsPage,
-    SettingsPage
+    SettingsPage,
+    AuthPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,12 +44,14 @@ import {SettingsPage} from "../pages/settings/settings";
     BookListPage,
     ListCdPage,
     TabsPage,
-    SettingsPage
+    SettingsPage,
+    AuthPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ListService,
+    AuthService,
 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

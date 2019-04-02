@@ -21,14 +21,28 @@
   </ion-card-content>
 
 </ion-card>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <button ion-button [disabled]="LivreList.etat" color="secondary" (click)="onToggleLivre()" full>Preter</button>
-      </ion-col>
-      <ion-col>
-        <button color="orange" ion-button [disabled]="!LivreList.etat" ion-button (click)="onToggleLivre()"  full>Recuperer</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+  <form #f="ngForm" (ngSubmit)="onSubmitForm(f)" >
+    <ion-list>
+      <ion-item>
+        <ion-label>Nom de la personne qui emprunte</ion-label>
+      </ion-item>
+      <ion-input type="text" name="namePersonne"
+                 [disabled]="LivreList.etat"
+                 ngModel required=""
+                 placeholder="Tapez le Nom ici afin de preter un livre"
+                 [(ngModel)]="LivreList.namePersonne"></ion-input>
+    </ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button [disabled]="!f.valid || LivreList.etat" color="secondary" type="submit" full>Preter</button>
+        </ion-col>
+        <ion-col>
+          <button color="orange" ion-button [disabled]="!LivreList.etat " ion-button type="submit"  full>Recuperer</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
 </ion-content>
